@@ -21,18 +21,18 @@
         android:layout_marginStart="8dp"/>
 
     <TextView
-        android:id="@+id/chapter_title"
-        style="@style/TextAppearance.Regular.Body1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        tools:text="Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chapter_menu"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"/>
+    android:id="@+id/chapter_title"
+    style="@style/TextAppearance.Regular.Body1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:maxLines="1"
+    tools:text="Title"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/chapter_menu"
+    android:layout_marginTop="12dp"
+    android:layout_marginStart="16dp"/>
 
     <TextView
         android:id="@+id/chapter_scanlator"

@@ -2,14 +2,20 @@ package eu.kanade.tachiyomi.ui.manga.chapter
 
 import android.view.View
 import android.widget.PopupMenu
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.signature.ObjectKey
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Manga
+import eu.kanade.tachiyomi.data.database.models.MangaImpl
 import eu.kanade.tachiyomi.data.download.model.Download
+import eu.kanade.tachiyomi.data.glide.GlideApp
 import eu.kanade.tachiyomi.ui.base.holder.BaseFlexibleViewHolder
 import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.view.gone
 import eu.kanade.tachiyomi.util.view.setVectorCompat
+import kotlinx.android.synthetic.main.catalogue_list_item.*
 import kotlinx.android.synthetic.main.chapters_item.*
+import kotlinx.android.synthetic.main.chapters_item.download_text
 import java.util.*
 
 class ChapterHolder(
@@ -64,6 +70,17 @@ class ChapterHolder(
         } else {
             ""
         }
+
+        // Update the cover.
+        GlideApp.with(itemView.context).clear(chapter_thumbnail)
+        GlideApp.with(itemView.context)
+                .load(item.manga)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .signature(ObjectKey(MangaImpl.getLastCoverFetch(item.manga.id!!).toString()))
+                .centerCrop()
+                .circleCrop()
+                .dontAnimate()
+                .into(chapter_thumbnail)
 
         notifyStatus(item.status)
     }
